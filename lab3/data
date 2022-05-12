@@ -1,0 +1,130 @@
+
+1.
+validation: Accuracy = 0.9935, Sensitivity = 0.9906, Specificity = 0.9966
+
+2.
+Changing the Dense MLP from 10 to 1.
+Second 2D changed to 3 instead of 4.
+
+Can du this when there are few classes
+
+3.
+Looking at the bottom left corner? 6's often more brighter than 5's??
+
+4.
+# First conv layer
+ex3.add(Conv2D(6, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
+ex3.add(MaxPooling2D(pool_size=(2, 2)))
+
+# Second conv layer
+ex3.add(Conv2D(6, kernel_size=(3, 3), activation='relu'))
+ex3.add(MaxPooling2D(pool_size=(2, 2)))
+
+# Fully connected MLP layers
+ex3.add(Flatten())
+ex3.add(Dense(15, activation='relu'))
+
+# Output layer
+ex3.add(Dense(3, activation='sigmoid'))
+
+
+Validation  log_loss:   0.7160424157455564
+Validation  accuracy:   0.957
+Why more difficult?
+
+5.
+40:
+Training  log_loss:   0.39492630531441
+Training  accuracy:   0.956
+
+Validation  log_loss:   1.050755587380374
+Validation  accuracy:   0.706
+
+50:
+gives training acc: 1; prob overfitted
+
+Harder why?
+
+# First conv layer
+ex3.add(Conv2D(8, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
+ex3.add(MaxPooling2D(pool_size=(2, 2)))
+
+# Second conv layer
+ex3.add(Conv2D(8, kernel_size=(3, 3), activation='relu'))
+ex3.add(MaxPooling2D(pool_size=(2, 2)))
+
+# Third conv layer
+ex3.add(Conv2D(8, kernel_size=(2, 2), activation='relu'))
+ex3.add(MaxPooling2D(pool_size=(2, 2)))
+
+# Fully connected MLP layers
+ex3.add(Flatten())
+ex3.add(Dense(40, activation='relu'))
+
+# Output layer
+ex3.add(Dense(3, activation='sigmoid'))
+
+6.
+simpleRNN:
+Epoch   Time/Epoch  Trn-Err     Val-Err
+20     28.09        0.30329     0.28207
+20     28.94        0.20321     0.20376
+20     28.57        0.24178     0.21749
+
+LSTM:
+Epoch   Time/Epoch  Trn-Err     Val-Err
+20      15.58       0.03961     0.03722
+20     32.30        0.05388     0.04951
+
+7.
+Changed number of parmas by adjusting nh1
+
+simpleRNN - 177 parmas
+20     28.15        0.14405     0.13266
+20     15.62        0.10690     0.09651
+20     15.77        0.07276     0.11260
+
+GRU - 169 parmas
+20     15.01        0.03048     0.03308
+20     16.03        0.03318     0.03269
+20     15.85        0.02336     0.02349
+
+LSTM -  199 params
+20     15.48        0.03303     0.03398
+20     15.03        0.03759     0.04003
+20     15.62        0.04065     0.03485
+
+8.
+One is detecting where a peak should be, one the level of the peak, one the shape or width(?)
+
+we have n1, n2 and n3. They are probably added in some way:
+output = w1*n1 + w2*n2 + w3*n3
+
+9.
+
+# The network type
+net = SimpleRNN
+# net = GRU
+# net = LSTM
+
+# Number of hidden nodes
+# nh1 = 5
+nh1 = 40
+
+# This is only if you would like to add an additional hidden layer. See below.
+nh2 = 20
+
+# The activation function
+activation = 'tanh'
+# activation = 'relu'
+
+# The number of epochs
+nE = 30
+
+adam = Adam(lr=0.003) # default = 0.003
+
+10.
+Yes, I guess. Not to familiar with C++
+
+11.
+Higher temp => more longer words ?
