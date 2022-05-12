@@ -1,0 +1,26 @@
+| Batch Size | Run1 (avg MSE) | Run2 (avg MSE) | Run3 (avg MSE) |
+| :--------- | :------------- | :------------- | :------------- |
+| 1          | 0.5541425148   | 0.5261060596   | 0.5504816771   |
+| 5          | 0.5144785046   | 0.2821144312   | 0.0829201787   |
+| 10         | 0.2498411480   | 0.0252238487   | 0.0145633773   |
+| 15         | 0.2729894078   | 0.0169144819   | 0.0132062026   |
+| 25         | 0.4341872533   | 0.1232543522   | 0.0142205078   |
+| 40         | 0.4851879278   | 0.4039498617   | 0.0279739697   |
+
+Epochs to first success |
+:---------------------- |
+Not reached             |
+Not reached             |
+2000                    |
+1500                    |
+1500                    |
+3500                    |
+
+
+During this lab we explore how different hyper parameters effect the output of an MLP while using two different minimization methods. We will also take a look how the number of weights will effect the time it takes to train a networks. The hyper parameters in focus this lab were batch size, learning rate and number of epochs.
+
+To summarize the lab, in the beginning we found that the optimal learning rate is hard to find and is dependent on the other hyper parameters in the network. It was also found that both a too small or too large learning rate is bad for the network cause when those to extremes were tried either a bad solution were reached or none at all.
+
+During the lab it were discussed what happens when the batch size of a network did not evenly divide the data size. When this occurs the last iteration will simply have a smaller batch size than the other.
+
+When training an MLP on the more complex data set *reg1*, the effect of a large amount of weight were found. When many nodes are present in the longer it takes for the network to reach a good solution. However it was also found that we can increase the accuracy of the system by adding more nodes to the network.
